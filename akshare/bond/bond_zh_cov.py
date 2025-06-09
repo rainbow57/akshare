@@ -42,6 +42,9 @@ def _get_zh_bond_hs_cov_page_count() -> int:
     else:
         return int(page_count) + 1
 
+def bond_zh_hs_cov_page_count() -> int:
+    return _get_zh_bond_hs_cov_page_count()
+
 
 def bond_zh_hs_cov_spot() -> pd.DataFrame:
     """
@@ -55,10 +58,28 @@ def bond_zh_hs_cov_spot() -> pd.DataFrame:
     zh_sina_bond_hs_payload_copy = zh_sina_bond_hs_cov_payload.copy()
     tqdm = get_tqdm()
     for page in tqdm(range(1, page_count + 1), leave=False):
-        zh_sina_bond_hs_payload_copy.update({"page": page})
+        zh_sina_bond_hs_payload_copy.update({"page": page}) # type: ignore
         res = requests.get(zh_sina_bond_hs_cov_url, params=zh_sina_bond_hs_payload_copy)
         data_json = demjson.decode(res.text)
         big_df = pd.concat(objs=[big_df, pd.DataFrame(data_json)], ignore_index=True)
+    return big_df
+
+def bond_zh_hs_cov_spot_page(page: str = "1") -> pd.DataFrame:
+    """
+    新浪财经-债券-沪深可转债的实时行情数据; 大量抓取容易封IP
+    https://vip.stock.finance.sina.com.cn/mkt/#hskzz_z
+    :return: 所有沪深可转债在当前时刻的实时行情数据
+    :rtype: pandas.DataFrame
+    """
+    big_df = pd.DataFrame()
+    page_count = _get_zh_bond_hs_cov_page_count()
+    if int(page) > page_count:
+        return big_df
+    zh_sina_bond_hs_payload_copy = zh_sina_bond_hs_cov_payload.copy()
+    zh_sina_bond_hs_payload_copy.update({"page": page})
+    res = requests.get(zh_sina_bond_hs_cov_url, params=zh_sina_bond_hs_payload_copy)
+    data_json = demjson.decode(res.text)
+    big_df = pd.concat(objs=[big_df, pd.DataFrame(data_json)], ignore_index=True)
     return big_df
 
 
