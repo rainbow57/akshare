@@ -3108,7 +3108,7 @@ amac_manager_cancelled_info # 中国证券投资基金业协会-信息公示-诚
 1.16.98 fix: fix fund_open_fund_info_em interface
 """
 
-__version__ = "1.16.98"
+__version__ = "1.16.99"
 __author__ = "AKFamily"
 
 import sys
@@ -4232,12 +4232,16 @@ A 股东方财富
 """
 from akshare.stock_feature.stock_hist_em import (
     stock_zh_a_spot_em,
+    stock_zh_a_spot_em_page,
     stock_bj_a_spot_em,
+    stock_bj_a_spot_em_page,
     stock_new_a_spot_em,
     stock_kc_a_spot_em,
     stock_cy_a_spot_em,
     stock_sh_a_spot_em,
+    stock_sh_a_spot_em_page,
     stock_sz_a_spot_em,
+    stock_sz_a_spot_em_page,
     stock_zh_b_spot_em,
     stock_zh_a_hist,
     stock_hk_spot_em,
@@ -5000,6 +5004,8 @@ from akshare.bond.bond_zh_cov import (
     bond_zh_hs_cov_min,
     bond_zh_hs_cov_pre_min,
     bond_zh_cov_value_analysis,
+    bond_zh_hs_cov_page_count,
+    bond_zh_hs_cov_spot_page
 )
 from akshare.bond.bond_convert import (
     bond_cb_jsl,
@@ -5295,7 +5301,9 @@ from akshare.stock.stock_zh_kcb_sina import (
 A股
 """
 from akshare.stock.stock_zh_a_sina import (
+    stock_zh_a_page_count,
     stock_zh_a_spot,
+    stock_zh_a_spot_page,
     stock_zh_a_daily,
     stock_zh_a_minute,
     stock_zh_a_cdr_daily,
