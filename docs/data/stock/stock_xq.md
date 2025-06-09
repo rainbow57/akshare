@@ -83,7 +83,7 @@ print(stock_individual_basic_info_xq_df)
 
 #### 实时行情数据
 
-##### 实时行情数据-雪球
+##### 个股实时行情数据-雪球
 
 接口: stock_individual_spot_xq
 

@@ -40,6 +40,9 @@ def _get_zh_a_page_count() -> int:
         return page_count
     else:
         return int(page_count) + 1
+    
+def stock_zh_a_page_count() -> int:
+    return _get_zh_a_page_count()
 
 
 def stock_zh_a_spot() -> pd.DataFrame:
@@ -123,6 +126,84 @@ def stock_zh_a_spot() -> pd.DataFrame:
     ]
     return big_df
 
+def stock_zh_a_spot_page(page = "1") -> pd.DataFrame:
+    """
+    新浪财经-所有 A 股的实时行情数据; 重复运行本函数会被新浪暂时封 IP
+    https://vip.stock.finance.sina.com.cn/mkt/#hs_a
+    :return: 所有股票的实时行情数据
+    :rtype: pandas.DataFrame
+    """
+    big_df = pd.DataFrame()
+    zh_sina_stock_payload_copy = zh_sina_a_stock_payload.copy()
+    page_count = _get_zh_a_page_count()
+    if int(page) > page_count:
+        return big_df
+    zh_sina_stock_payload_copy.update({"page": page})
+    r = requests.get(zh_sina_a_stock_url, params=zh_sina_stock_payload_copy)
+    data_json = demjson.decode(r.text)
+    big_df = pd.concat(objs=[big_df, pd.DataFrame(data_json)], ignore_index=True)
+
+    big_df = big_df.astype(
+        {
+            "trade": "float",
+            "pricechange": "float",
+            "changepercent": "float",
+            "buy": "float",
+            "sell": "float",
+            "settlement": "float",
+            "open": "float",
+            "high": "float",
+            "low": "float",
+            "volume": "float",
+            "amount": "float",
+            "per": "float",
+            "pb": "float",
+            "mktcap": "float",
+            "nmc": "float",
+            "turnoverratio": "float",
+        }
+    )
+    big_df.columns = [
+        "代码",
+        "_",
+        "名称",
+        "最新价",
+        "涨跌额",
+        "涨跌幅",
+        "买入",
+        "卖出",
+        "昨收",
+        "今开",
+        "最高",
+        "最低",
+        "成交量",
+        "成交额",
+        "时间戳",
+        "_",
+        "_",
+        "_",
+        "_",
+        "_",
+    ]
+    big_df = big_df[
+        [
+            "代码",
+            "名称",
+            "最新价",
+            "涨跌额",
+            "涨跌幅",
+            "买入",
+            "卖出",
+            "昨收",
+            "今开",
+            "最高",
+            "最低",
+            "成交量",
+            "成交额",
+            "时间戳",
+        ]
+    ]
+    return big_df
 
 def stock_zh_a_daily(
     symbol: str = "sh603843",

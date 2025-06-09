@@ -4250,12 +4250,16 @@ A 股东方财富
 """
 from akshare.stock_feature.stock_hist_em import (
     stock_zh_a_spot_em,
+    stock_zh_a_spot_em_page,
     stock_bj_a_spot_em,
+    stock_bj_a_spot_em_page,
     stock_new_a_spot_em,
     stock_kc_a_spot_em,
     stock_cy_a_spot_em,
     stock_sh_a_spot_em,
+    stock_sh_a_spot_em_page,
     stock_sz_a_spot_em,
+    stock_sz_a_spot_em_page,
     stock_zh_b_spot_em,
     stock_zh_ab_comparison_em,
     stock_zh_a_hist,
@@ -5019,6 +5023,8 @@ from akshare.bond.bond_zh_cov import (
     bond_zh_hs_cov_min,
     bond_zh_hs_cov_pre_min,
     bond_zh_cov_value_analysis,
+    bond_zh_hs_cov_page_count,
+    bond_zh_hs_cov_spot_page
 )
 from akshare.bond.bond_convert import (
     bond_cb_jsl,
@@ -5314,7 +5320,9 @@ from akshare.stock.stock_zh_kcb_sina import (
 A股
 """
 from akshare.stock.stock_zh_a_sina import (
+    stock_zh_a_page_count,
     stock_zh_a_spot,
+    stock_zh_a_spot_page,
     stock_zh_a_daily,
     stock_zh_a_minute,
     stock_zh_a_cdr_daily,

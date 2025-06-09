@@ -55,6 +55,32 @@ def fetch_paginated_data(url: str, base_params: Dict, timeout: int = 15):
     temp_df["index"] = temp_df["index"].astype(int) + 1
     return temp_df
 
+def fetch_paginated_data_page(url: str, base_params: Dict, timeout: int = 15):
+    """
+    东方财富-获指定页的取数据
+    https://quote.eastmoney.com/f1.html?newcode=0.000001
+    :param url: 股票代码
+    :type url: str
+    :param base_params: 基础请求参数
+    :type base_params: dict
+    :param timeout: 请求超时时间
+    :type timeout: str
+    :return: 合并后的数据
+    :rtype: pandas.DataFrame
+    """
+    # 复制参数以避免修改原始参数
+    params = base_params.copy()
+    # 获取第一页数据，用于确定分页信息
+    r = requests.get(url, params=params, timeout=timeout)
+    data_json = r.json()
+    # 合并所有数据
+    temp_df = pd.DataFrame(data_json["data"]["diff"])
+    temp_df["f3"] = pd.to_numeric(temp_df["f3"], errors="coerce")
+    temp_df.sort_values(by=["f3"], ascending=False, inplace=True, ignore_index=True)
+    temp_df.reset_index(inplace=True)
+    temp_df["index"] = temp_df["index"].astype(int) + 1
+    return temp_df
+
 
 def set_df_columns(df: pd.DataFrame, cols: List[str]) -> pd.DataFrame:
     """
