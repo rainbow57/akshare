@@ -73,7 +73,14 @@ def fetch_paginated_data_page(url: str, base_params: Dict, timeout: int = 15):
     # 获取第一页数据，用于确定分页信息
     r = requests.get(url, params=params, timeout=timeout)
     data_json = r.json()
-    return pd.DataFrame(data_json["data"]["diff"])
+    # 创建DataFrame
+    temp_df = pd.DataFrame(data_json["data"]["diff"])
+    
+    # 添加与 fetch_paginated_data 一致的 index 列
+    temp_df.reset_index(inplace=True)
+    temp_df["index"] = temp_df["index"] + 1  # 从1开始编号
+    
+    return temp_df
 
 
 def set_df_columns(df: pd.DataFrame, cols: List[str]) -> pd.DataFrame:
