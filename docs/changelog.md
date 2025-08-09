@@ -81,6 +81,26 @@
 
 ## 更新说明详情
 
+1.17.31 fix: fix index_neei_cx interface
+
+	1. 修复 index_neei_cx 接口
+
+1.17.30 fix: fix get_receipt interface
+
+	1. 修复 get_receipt 接口
+
+1.17.29 fix: fix air_quality_watch_point interface
+
+	1. 修复 air_quality_watch_point 接口
+
+1.17.28 fix: fix stock_financial_analysis_indicator_em interface
+
+	1. 修复 stock_financial_analysis_indicator_em 接口
+
+1.17.27 fix: fix index_csindex_all interface
+
+	1. 修复 index_csindex_all 接口
+
 1.17.26 fix: fix stock_hot_rank_detail_em interface
 
 	1. 修复 stock_hot_rank_detail_em 接口
@@ -147,7 +167,7 @@
 
 1.17.11 fix: fix stock_individual_spot_xq interface
 
-	1. 修复 stock_individual_spot_xq 接口 
+	1. 修复 stock_individual_spot_xq 接口
 
 1.17.10 fix: fix get_shfe_daily interface
 
@@ -5693,6 +5713,16 @@
     3. 修改 air_quality_hist 接口的请求日期格式，从 '2022-01-01' 为 '20220101'
 
 ## 版本更新说明
+
+1.17.31 fix: fix index_neei_cx interface
+
+1.17.30 fix: fix get_receipt interface
+
+1.17.29 fix: fix air_quality_watch_point interface
+
+1.17.28 fix: fix stock_financial_analysis_indicator_em interface
+
+1.17.27 fix: fix index_csindex_all interface
 
 1.17.26 fix: fix stock_hot_rank_detail_em interface
 
