@@ -848,7 +848,7 @@ import akshare as ak
 
 ak.get_dce_rank_table()
 ak.get_cffex_rank_table()
-ak.get_czce_rank_table()
+ak.get_rank_table_czce()
 ak.get_shfe_rank_table()
 ```
 
@@ -857,8 +857,8 @@ ak.get_shfe_rank_table()
 ```python
 import akshare as ak
 
-get_czce_rank_table_df = ak.get_czce_rank_table(date='20200213')
-print(get_czce_rank_table_df)
+get_rank_table_czce_df = ak.get_rank_table_czce(date='20200213')
+print(get_rank_table_czce_df)
 ```
 
 注意:
@@ -1073,7 +1073,7 @@ print(futures_gfex_position_rank_dict)
 
 ##### 仓单日报-郑州商品交易所
 
-接口: futures_czce_warehouse_receipt
+接口: futures_warehouse_receipt_czce
 
 目标地址: http://www.czce.com.cn/cn/jysj/cdrb/H770310index_1.htm
 
@@ -1098,8 +1098,8 @@ print(futures_gfex_position_rank_dict)
 ```python
 import akshare as ak
 
-futures_czce_warehouse_receipt_df = ak.futures_czce_warehouse_receipt(date="20200702")
-print(futures_czce_warehouse_receipt_df)
+futures_warehouse_receipt_czce_df = ak.futures_warehouse_receipt_czce(date="20200702")
+print(futures_warehouse_receipt_czce_df)
 ```
 
 数据示例
@@ -2832,7 +2832,7 @@ print(futures_zh_minute_sina_df)
 
 目标地址: https://qhweb.eastmoney.com/quote
 
-描述: 东方财富网-期货行情-行情数据
+描述: 东方财富网-期货行情-行情数据；其中 weekly, monthly 获取的成交额和持仓量未经验证
 
 限量: 单次返回指定 symbol 的所有数据; 只能获取当期合约;
 
