@@ -430,6 +430,8 @@
  "stock_financial_analysis_indicator"  # 财务指标
  "stock_add_stock"  # 股票增发
  "stock_ipo_info"  # 股票新股
+ "stock_ipo_ths"  # 新股申购与中签
+ "stock_ipo_hk_ths"  # 新股申购与中签
  "stock_history_dividend_detail"  # 分红配股
  "stock_history_dividend"  # 历史分红
  "stock_dividend_cninfo"  # 个股历史分红
@@ -666,6 +668,7 @@
  "stock_ggcg_em"  # 高管持股
  # 新发基金
  "fund_new_found_em"  # 新发基金
+ "fund_new_found_ths"  # 新发基金
  # 柯桥指数
  "index_kq_fz"  # 柯桥纺织指数
  "index_kq_fashion"  # 柯桥时尚指数
@@ -1365,6 +1368,14 @@
  "option_contract_info_ctp"  # 期权合约信息
  # 百度股市通-美股-财务报表-估值数据
  "stock_us_valuation_baidu"  # 百度股市通-美股-财务报表-估值数据
+ # 基金份额
+ "fund_etf_scale_szse"  # 深圳证券交易所-基金产品-基金列表-ETF基金份额
+ "fund_etf_scale_sse"  # 上海证券交易所-产品-基金产品-ETF产品-ETF产品列表-基金规模
+ # 新浪财经-债券-美国国债收益率行情数据
+ "bond_gb_us_sina"  # 新浪财经-债券-美国国债收益率行情数据
+ "bond_gb_zh_sina"  # 新浪财经-债券-中国国债收益率行情数据
+ # 期货交易所结算参数
+ "futures_settle"  # 期货交易所结算参数
 ```
 
 ## 案例演示

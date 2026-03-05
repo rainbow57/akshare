@@ -5,6 +5,7 @@ Date: 2025/12/22 17:00
 Desc: 天天基金-基金档案
 https://fundf10.eastmoney.com/jjfl_015641.html
 """
+
 import re
 from io import StringIO
 
@@ -31,7 +32,7 @@ def fund_fee_em(symbol: str = "015641", indicator: str = "认购费率") -> pd.D
     title_elements = soup.find_all(name="h4", class_="t")
     for title_elem in title_elements:
         title_text = title_elem.get_text(strip=True)
-        title_text = re.sub(r'\s+', ' ', title_text).strip()
+        title_text = re.sub(r"\s+", " ", title_text).strip()
         if title_text == "申购与赎回金额":
             next_table = title_elem.find_all_next("table")[0]
             next_next_table = title_elem.find_all_next("table")[1]
@@ -52,6 +53,7 @@ def fund_fee_em(symbol: str = "015641", indicator: str = "认购费率") -> pd.D
                 df = pd.read_html(StringIO(table_html))[0]
                 tables_dict[title_text] = df
             except Exception as e:
+                print("Error:", e)
                 continue
 
     if indicator == "交易状态":
@@ -66,59 +68,39 @@ def fund_fee_em(symbol: str = "015641", indicator: str = "认购费率") -> pd.D
         temp_df = tables_dict[indicator]
     elif indicator == "认购费率（前端）":
         temp_df = tables_dict[indicator]
-        temp_df["原费率"] = temp_df["原费率|天天基金优惠费率"].str.split(
-            "|", expand=True
-        )[0]
-        temp_df["天天基金优惠费率"] = temp_df["原费率|天天基金优惠费率"].str.split(
-            "|", expand=True
-        )[1]
+        temp_df[["原费率", "天天基金优惠费率"]] = temp_df[
+            "原费率|天天基金优惠费率"
+        ].str.split("|", expand=True)
         del temp_df["原费率|天天基金优惠费率"]
         temp_df.loc[3, "天天基金优惠费率"] = temp_df.loc[3, "原费率"]
         temp_df["原费率"] = temp_df["原费率"].str.strip()
         temp_df["天天基金优惠费率"] = temp_df["天天基金优惠费率"].str.strip()
     elif indicator == "申购费率（前端）":
         temp_df = tables_dict[indicator]
-        if temp_df[
-            "原费率|天天基金优惠费率 银行卡购买|活期宝购买"
-        ].str.split("|", expand=True).shape == (1, 1):
-            temp_df["原费率"] = temp_df[
-                "原费率|天天基金优惠费率 银行卡购买|活期宝购买"
-            ].str.split("|", expand=True)[0]
-            temp_df["天天基金优惠费率-银行卡购买"] = temp_df[
-                "原费率|天天基金优惠费率 银行卡购买|活期宝购买"
-            ].str.split("|", expand=True)[0]
-            temp_df["天天基金优惠费率-活期宝购买"] = temp_df[
-                "原费率|天天基金优惠费率 银行卡购买|活期宝购买"
-            ].str.split("|", expand=True)[0]
-            del temp_df["原费率|天天基金优惠费率 银行卡购买|活期宝购买"]
-        elif temp_df[
-            "原费率|天天基金优惠费率 银行卡购买|活期宝购买"
-        ].str.split("|", expand=True).shape == (3, 3):
-            temp_df["原费率"] = temp_df[
-                "原费率|天天基金优惠费率 银行卡购买|活期宝购买"
-            ].str.split("|", expand=True)[0]
-            temp_df["天天基金优惠费率-银行卡购买"] = temp_df[
-                "原费率|天天基金优惠费率 银行卡购买|活期宝购买"
-            ].str.split("|", expand=True)[1]
-            temp_df["天天基金优惠费率-活期宝购买"] = temp_df[
-                "原费率|天天基金优惠费率 银行卡购买|活期宝购买"
-            ].str.split("|", expand=True)[2]
-            temp_df.loc[2, "天天基金优惠费率-银行卡购买"] = temp_df.loc[2, "原费率"]
-            temp_df.loc[2, "天天基金优惠费率-活期宝购买"] = temp_df.loc[2, "原费率"]
-            del temp_df["原费率|天天基金优惠费率 银行卡购买|活期宝购买"]
+        if "原费率|天天基金优惠费率 银行卡购买|活期宝购买" not in temp_df.columns:
+            # assert temp_df.columns.tolist() == ["适用金额", "适用期限", "费率"]
+            return temp_df
+        splited = temp_df["原费率|天天基金优惠费率 银行卡购买|活期宝购买"].str.split(
+            "|", expand=True
+        )
+        if splited.shape[1] == 1:
+            temp_df.rename(
+                columns={"原费率|天天基金优惠费率 银行卡购买|活期宝购买": "原费率"},
+                inplace=True,
+            )
+            temp_df["天天基金优惠费率-银行卡购买"] = temp_df["原费率"]
+            temp_df["天天基金优惠费率-活期宝购买"] = temp_df["原费率"]
         else:
-            temp_df["原费率"] = temp_df[
-                "原费率|天天基金优惠费率 银行卡购买|活期宝购买"
-            ].str.split("|", expand=True)[0]
+            temp_df[
+                ["原费率", "天天基金优惠费率-银行卡购买", "天天基金优惠费率-活期宝购买"]
+            ] = splited
             temp_df["天天基金优惠费率-银行卡购买"] = temp_df[
-                "原费率|天天基金优惠费率 银行卡购买|活期宝购买"
-            ].str.split("|", expand=True)[1]
+                "天天基金优惠费率-银行卡购买"
+            ].fillna(temp_df["原费率"])
             temp_df["天天基金优惠费率-活期宝购买"] = temp_df[
-                "原费率|天天基金优惠费率 银行卡购买|活期宝购买"
-            ].str.split("|", expand=True)[2]
+                "天天基金优惠费率-活期宝购买"
+            ].fillna(temp_df["原费率"])
             del temp_df["原费率|天天基金优惠费率 银行卡购买|活期宝购买"]
-            temp_df.loc[3, "天天基金优惠费率-银行卡购买"] = temp_df.loc[3, "原费率"]
-            temp_df.loc[3, "天天基金优惠费率-活期宝购买"] = temp_df.loc[3, "原费率"]
         temp_df["原费率"] = temp_df["原费率"].str.strip()
         temp_df["天天基金优惠费率-银行卡购买"] = temp_df[
             "天天基金优惠费率-银行卡购买"
@@ -126,8 +108,13 @@ def fund_fee_em(symbol: str = "015641", indicator: str = "认购费率") -> pd.D
         temp_df["天天基金优惠费率-活期宝购买"] = temp_df[
             "天天基金优惠费率-活期宝购买"
         ].str.strip()
-    elif indicator == "赎回费率":
+    elif indicator in ("赎回费率", "赎回费率（前端）", "赎回费率（后端）"):
         temp_df = tables_dict[indicator]
+        if "原费率|天天基金优惠费率" in temp_df.columns:
+            temp_df[["原费率", "天天基金优惠费率"]] = temp_df[
+                "原费率|天天基金优惠费率"
+            ].str.split("|", expand=True)
+            del temp_df["原费率|天天基金优惠费率"]
     else:
         temp_df = pd.DataFrame([])
     return temp_df
@@ -155,6 +142,12 @@ if __name__ == "__main__":
     fund_fee_em_df = fund_fee_em(symbol="000011", indicator="赎回费率")
     print(fund_fee_em_df)
 
+    fund_fee_em_df = fund_fee_em(symbol="018403", indicator="赎回费率")
+    print(fund_fee_em_df)
+
+    fund_fee_em_df = fund_fee_em(symbol="100035", indicator="赎回费率（前端）")
+    print(fund_fee_em_df)
+
     fund_fee_em_df = fund_fee_em(symbol="022364", indicator="申购费率（前端）")
     print(fund_fee_em_df)
 
@@ -162,6 +155,12 @@ if __name__ == "__main__":
     print(fund_fee_em_df)
 
     fund_fee_em_df = fund_fee_em(symbol="006030", indicator="申购费率（前端）")
+    print(fund_fee_em_df)
+
+    fund_fee_em_df = fund_fee_em(symbol="022568", indicator="申购费率（前端）")
+    print(fund_fee_em_df)
+
+    fund_fee_em_df = fund_fee_em(symbol="960029", indicator="申购费率（前端）")
     print(fund_fee_em_df)
 
     fund_fee_em_df = fund_fee_em(symbol="000011", indicator="认购费率（后端）")

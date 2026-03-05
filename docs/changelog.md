@@ -89,6 +89,104 @@
 
 ## 更新说明详情
 
+1.18.35 fix: fix stock_ipo_ths interface
+
+	1. 修复 stock_ipo_ths 接口
+
+1.18.34 fix: fix fund_fh_em interface
+
+	1. 修复 fund_fh_em 接口
+
+1.18.33 fix: fix futures_spot_price_daily interface
+
+	1. 修复 futures_spot_price_daily 接口
+
+1.18.32 fix: fix fund_new_found_ths interface
+
+	1. 修复 fund_new_found_ths 接口
+
+1.18.31 fix: fix stock_hk_dividend_payout_em interface
+
+	1. 修复 stock_hk_dividend_payout_em 接口
+
+1.18.30 fix: fix futures_inventory_99 interface
+
+	1. 修复 futures_inventory_99 接口
+
+1.18.29 fix: fix stock_individual_basic_info_xq interface
+
+	1. 修复 stock_individual_basic_info_xq  接口
+
+1.18.28 fix: fix futures_spot_price_daily interface
+
+	1. 修复 futures_spot_price_daily 接口
+
+1.18.27 fix: fix futures_comm_js interface
+
+	1. 修复 futures_comm_js 接口
+
+1.18.26 fix: fix fund_fh_em interface
+
+	1. 修复 fund_fh_em 接口
+	2. 修复 stock_gdfx_free_holding_change_em 接口
+
+1.18.25 fix: fix qdii_e_comm_jsl interface
+
+	1. 修复 qdii_e_comm_jsl 接口
+	2. 修复 stock_rank_xstp_ths 接口
+
+1.18.24 fix: fix stock_individual_spot_xq interface
+
+	1. 修复 stock_individual_spot_xq 接口
+
+1.18.23 fix: fix fund_fee_em interface
+
+	1. 修复 fund_fee_em 接口
+	2. 修复 fund_etf_category_ths 接口
+
+1.18.22 fix: fix bond_gb_zh_sina interface
+
+	1. 修复 bond_gb_zh_sina 接口
+	2. 修复 bond_gb_us_sina 接口
+
+1.18.21 fix: fix get_receipt interface
+
+	1. 修复 get_receipt 接口
+
+1.18.20 fix: fix stock_individual_spot_xq interface
+
+	1. 修复 stock_individual_spot_xq 接口
+
+1.18.19 fix: fix GitHub action
+
+	1. 修复配置文件
+
+1.18.18 fix: fix stock_individual_spot_xq interface
+
+	1. 修复 stock_individual_spot_xq 接口
+
+1.18.17 fix: fix stock_individual_spot_xq interface
+
+	1. 修复 stock_individual_spot_xq 接口
+
+1.18.16 fix: fix news_economic_baidu interface
+
+	1. 修复 news_economic_baidu 接口
+
+1.18.15 fix: fix fund_etf_scale_sse and fund_etf_scale_szse interface
+
+	1. 修复 fund_etf_scale_sse 接口-基金份额字段数据解析错误，统一使用"份"作为单位
+	2. 修复 fund_etf_scale_szse 接口-基金份额字段数据解析错误，统一使用"份"作为单位
+
+1.18.14 add: add fund_etf_scale_sse and fund_etf_scale_szse interface
+
+	1. 新增 fund_etf_scale_sse 接口-上海证券交易所 ETF 基金份额数据
+	2. 新增 fund_etf_scale_szse 接口-深圳证券交易所 ETF 基金份额数据
+
+1.18.13 fix: fix futures_spot_price_daily interface
+
+	1. 修复 futures_spot_price_daily 接口
+
 1.18.12 fix: fix news_economic_baidu interface
 
 	1. 修复 news_economic_baidu 接口
@@ -580,7 +678,7 @@
 	1. 修复 stock_info_sz_delist 接口
 
 1.16.98 fix: fix fund_open_fund_info_em interface
-	
+
 	1. 修复 fund_open_fund_info_em 接口
 
 1.16.97 fix: fix fund_open_fund_info_em interface
@@ -588,7 +686,7 @@
 	1. 修复 fund_open_fund_info_em 接口
 
 1.16.96 fix: fix stock_individual_spot_xq interface
-	
+
 	1. 修复 stock_individual_spot_xq 接口
 	2. 修复 stock_cyq_em 接口
 
@@ -6075,6 +6173,52 @@
     3. 修改 air_quality_hist 接口的请求日期格式，从 '2022-01-01' 为 '20220101'
 
 ## 版本更新说明
+
+1.18.35 fix: fix stock_ipo_ths interface
+
+1.18.34 fix: fix fund_fh_em interface
+
+1.18.33 fix: fix futures_spot_price_daily interface
+
+1.18.32 fix: fix fund_new_found_ths interface
+
+1.18.31 fix: fix stock_hk_dividend_payout_em interface
+
+1.18.30 fix: fix futures_inventory_99 interface
+
+1.18.29 fix: fix stock_individual_basic_info_xq interface
+
+1.18.28 fix: fix futures_spot_price_daily interface
+
+1.18.27 fix: fix futures_comm_js interface
+
+1.18.26 fix: fix fund_fh_em interface
+
+1.18.25 fix: fix qdii_e_comm_jsl interface
+
+1.18.24 fix: fix stock_individual_spot_xq interface
+
+1.18.23 fix: fix fund_fee_em interface
+
+1.18.22 fix: fix bond_gb_zh_sina interface
+
+1.18.21 fix: fix get_receipt interface
+
+1.18.20 fix: fix stock_individual_spot_xq interface
+
+1.18.19 fix: fix GitHub action
+
+1.18.18 fix: fix stock_individual_spot_xq interface
+
+1.18.17 fix: fix stock_individual_spot_xq interface
+
+1.18.16 fix: fix news_economic_baidu interface
+
+1.18.15 fix: fix fund_etf_scale_sse and fund_etf_scale_szse interface
+
+1.18.14 add: add fund_etf_scale_sse and fund_etf_scale_szse interface
+
+1.18.13 fix: fix futures_spot_price_daily interface
 
 1.18.12 fix: fix news_economic_baidu interface
 
