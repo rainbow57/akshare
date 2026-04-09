@@ -262,7 +262,7 @@ def stock_zh_a_daily(
         "d", r.text.split("=")[1].split(";")[0].replace('"', "")
     )  # 执行js解密代码
     data_df = pd.DataFrame(dict_list)
-    data_df.index = pd.to_datetime(data_df["date"]).dt.date
+    data_df.index = pd.to_datetime(data_df["date"], errors="coerce").dt.date
     del data_df["date"]
     try:
         del data_df["prevclose"]
@@ -283,15 +283,7 @@ def stock_zh_a_daily(
     temp_df = pd.merge(
         data_df, amount_data_df, left_index=True, right_index=True, how="outer"
     )
-    try:
-        # try for pandas >= 2.1.0
-        temp_df.ffill(inplace=True)
-    except Exception:
-        try:
-            temp_df.fillna(method="ffill", inplace=True)
-        except Exception as e:
-            print("Error:", e)
-
+    temp_df.ffill(inplace=True)
     temp_df = temp_df.astype(float)
     temp_df["outstanding_share"] = temp_df["outstanding_share"] * 10000
     temp_df["turnover"] = temp_df["volume"] / temp_df["outstanding_share"]
@@ -334,15 +326,7 @@ def stock_zh_a_daily(
             right_index=True,
             how="outer",
         )
-        try:
-            # try for pandas >= 2.1.0
-            temp_df.ffill(inplace=True)
-        except Exception:
-            try:
-                # try for pandas < 2.1.0
-                temp_df.fillna(method="ffill", inplace=True)
-            except Exception as e:
-                print("Error:", e)
+        temp_df.ffill(inplace=True)
         temp_df = temp_df.astype(float)
         temp_df.dropna(inplace=True)
         temp_df.drop_duplicates(
@@ -378,15 +362,7 @@ def stock_zh_a_daily(
             right_index=True,
             how="outer",
         )
-        try:
-            # try for pandas >= 2.1.0
-            temp_df.ffill(inplace=True)
-        except Exception:
-            try:
-                # try for pandas < 2.1.0
-                temp_df.fillna(method="ffill", inplace=True)
-            except Exception as e:
-                print("Error:", e)
+        temp_df.ffill(inplace=True)
         temp_df = temp_df.astype(float)
         temp_df.dropna(inplace=True)
         temp_df.drop_duplicates(

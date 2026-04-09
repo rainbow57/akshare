@@ -9,6 +9,7 @@
 ```
  # 交易所期货数据
  "get_cffex_daily",  # 中国金融期货交易所每日交易数据
+ "futures_hist_daily_cffex",  # 中国金融期货交易所-每日交易数据
  "get_cffex_rank_table",  # 中国金融期货交易所前20会员持仓数据明细
  "get_czce_daily",  # 郑州商品交易所每日交易数据
  "get_rank_table_czce",  # 郑州商品交易所前20会员持仓数据明细
@@ -183,6 +184,7 @@
  "stock_gpzy_profile_em"  # 股权质押市场概况
  "stock_gpzy_pledge_ratio_em"  # 上市公司质押比例
  "stock_gpzy_pledge_ratio_detail_em"  # 重要股东股权质押明细
+ "stock_gpzy_individual_pledge_ratio_detail_em"  # 个股重要股东股权质押明细
  "stock_gpzy_distribute_statistics_company_em"  # 质押机构分布统计-证券公司
  "stock_gpzy_distribute_statistics_bank_em"  # 质押机构分布统计-银行
  "stock_gpzy_industry_data_em"  # 上市公司质押比例-行业数据
@@ -875,6 +877,7 @@
  "fund_report_stock_cninfo"  # 基金报表-基金重仓股
  # 公告大全-沪深 A 股公告
  "stock_notice_report"  # 公告大全-沪深 A 股公告
+ "stock_individual_notice_report"  # 公告大全-沪深 A 股个股公告
  # 基金报表-基金行业配置
  "fund_report_industry_allocation_cninfo"  # 基金报表-基金行业配置
  "fund_report_asset_allocation_cninfo"  # 基金报表-基金资产配置
@@ -882,6 +885,7 @@
  "fund_scale_open_sina"  # 基金规模-开放式基金
  "fund_scale_close_sina"  # 基金规模-封闭式基金
  "fund_scale_structured_sina"  # 基金规模-分级子基金
+ "fund_scale_daily_szse"  # 深圳证券交易所-基金产品-基金规模-日频数据
  # 沪深港通持股
  "stock_hsgt_individual_em"  # 沪深港通持股-具体股票
  "stock_hsgt_individual_detail_em"  # 沪深港通持股-具体股票-详情

@@ -3241,6 +3241,25 @@ amac_manager_cancelled_info # 中国证券投资基金业协会-信息公示-诚
 1.18.33 fix: fix futures_spot_price_daily interface
 1.18.34 fix: fix fund_fh_em interface
 1.18.35 fix: fix stock_ipo_ths interface
+1.18.36 fix: fix stock_zygc_em interface
+1.18.37 fix: fix fund_etf_dividend_sina interface
+1.18.38 fix: fix stock_hk_index_daily_sina interface
+1.18.39 fix: fix stock_hk_daily interface
+1.18.40 fix: fix stock_hk_daily interface
+1.18.41 fix: fix stock_zh_a_minute interface
+1.18.42 fix: fix stock_zh_a_minute interface
+1.18.43 fix: fix stock_financial_abstract_new_ths interface
+1.18.44 fix: fix index_option_50etf_qvix interface
+1.18.45 fix: fix stock_a_high_low_statistics interface
+1.18.46 fix: fix stock_a_all_pb interface
+1.18.47 fix: fix stock_margin_underlying_info_szse interface
+1.18.48 fix: fix stock_individual_spot_xq interface
+1.18.49 fix: fix macro_china_urban_unemployment interface
+1.18.50 fix: fix stock_gpzy_individual_pledge_ratio_detail_em interface
+1.18.51 fix: fix stock_a_gxl_lg interface
+1.18.52 fix: fix fund_scale_daily_szse interface
+1.18.53 fix: fix futures_hist_daily_cffex interface
+1.18.54 fix: fix stock_individual_notice_report interface
 """
 
 from akshare._version import __version__
@@ -3735,6 +3754,11 @@ from akshare.fund.fund_etf_sse import fund_etf_scale_sse
 深圳证券交易所-ETF基金份额数据
 """
 from akshare.fund.fund_etf_szse import fund_etf_scale_szse
+
+"""
+深圳证券交易所-基金规模日频数据
+"""
+from akshare.fund.fund_scale_szse import fund_scale_daily_szse
 
 """
 乐咕乐股-股债利差
@@ -4609,7 +4633,10 @@ from akshare.stock_feature.stock_lh_yybpm import (
 """
 沪深 A 股公告
 """
-from akshare.stock_fundamental.stock_notice import stock_notice_report
+from akshare.stock_fundamental.stock_notice import (
+    stock_notice_report,
+    stock_individual_notice_report,
+)
 
 """
 首发企业申报
@@ -5396,6 +5423,7 @@ from akshare.stock_feature.stock_gpzy_em import (
     stock_gpzy_distribute_statistics_company_em,
     stock_gpzy_industry_data_em,
     stock_gpzy_pledge_ratio_detail_em,
+    stock_gpzy_individual_pledge_ratio_detail_em,
 )
 
 """
@@ -5855,6 +5883,7 @@ from akshare.futures.futures_daily_bar import (
     get_futures_daily,
     get_ine_daily,
     get_gfex_daily,
+    futures_hist_daily_cffex
 )
 
 """

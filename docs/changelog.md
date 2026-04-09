@@ -89,6 +89,83 @@
 
 ## 更新说明详情
 
+1.18.54 fix: fix stock_individual_notice_report interface
+
+	1. 修复 stock_individual_notice_report 接口
+
+1.18.53 fix: fix futures_hist_daily_cffex interface
+
+	1. 修复 futures_hist_daily_cffex 接口
+
+1.18.52 fix: fix fund_scale_daily_szse interface
+
+	1. 修复 fund_scale_daily_szse 接口
+
+1.18.51 fix: fix stock_a_gxl_lg interface
+
+	1. 修复 stock_a_gxl_lg 接口
+
+1.18.50 fix: fix stock_gpzy_individual_pledge_ratio_detail_em interface
+
+	1. 修复 stock_gpzy_individual_pledge_ratio_detail_em 接口
+
+1.18.49 fix: fix macro_china_urban_unemployment interface
+
+	1. 修复 macro_china_urban_unemployment 接口
+
+1.18.48 fix: fix stock_individual_spot_xq interface
+
+	1. 修复 stock_individual_spot_xq 接口
+
+1.18.47 fix: fix stock_margin_underlying_info_szse interface
+
+	1. 修复 stock_margin_underlying_info_szse 接口
+
+1.18.46 fix: fix stock_a_all_pb interface
+
+	1. 修复 stock_a_all_pb 接口
+	2. 修复 stock_buffett_index_lg 接口
+
+1.18.45 fix: fix stock_a_high_low_statistics interface
+
+	1. 修复 stock_a_high_low_statistics 接口
+
+1.18.44 fix: fix index_option_50etf_qvix interface
+
+	1. 修复 index_option_50etf_qvix 接口
+
+1.18.43 fix: fix stock_financial_abstract_new_ths interface
+
+	1. 修复 stock_financial_abstract_new_ths 接口
+
+1.18.42 fix: fix stock_zh_a_minute interface
+
+	1. 修复 stock_zh_a_minute 接口
+
+1.18.41 fix: fix stock_zh_a_minute interface
+
+	1. 修复 stock_zh_a_minute 接口
+
+1.18.40 fix: fix stock_hk_daily interface
+
+	1. 修复 stock_hk_daily 接口
+
+1.18.39 fix: fix stock_hk_daily interface
+
+	1. 修复 stock_hk_daily 接口
+
+1.18.38 fix: fix stock_hk_index_daily_sina interface
+
+	1. 修复 stock_hk_index_daily_sina 接口
+
+1.18.37 fix: fix fund_etf_dividend_sina interface
+
+	1. 修复 fund_etf_dividend_sina 接口
+
+1.18.36 fix: fix stock_zygc_em interface
+
+	1. 修复 stock_zygc_em 接口
+
 1.18.35 fix: fix stock_ipo_ths interface
 
 	1. 修复 stock_ipo_ths 接口
@@ -6173,6 +6250,44 @@
     3. 修改 air_quality_hist 接口的请求日期格式，从 '2022-01-01' 为 '20220101'
 
 ## 版本更新说明
+
+1.18.54 fix: fix stock_individual_notice_report interface
+
+1.18.53 fix: fix futures_hist_daily_cffex interface
+
+1.18.52 fix: fix fund_scale_daily_szse interface
+
+1.18.51 fix: fix stock_a_gxl_lg interface
+
+1.18.50 fix: fix stock_gpzy_individual_pledge_ratio_detail_em interface
+
+1.18.49 fix: fix macro_china_urban_unemployment interface
+
+1.18.48 fix: fix stock_individual_spot_xq interface
+
+1.18.47 fix: fix stock_margin_underlying_info_szse interface
+
+1.18.46 fix: fix stock_a_all_pb interface
+
+1.18.45 fix: fix stock_a_high_low_statistics interface
+
+1.18.44 fix: fix index_option_50etf_qvix interface
+
+1.18.43 fix: fix stock_financial_abstract_new_ths interface
+
+1.18.42 fix: fix stock_zh_a_minute interface
+
+1.18.41 fix: fix stock_zh_a_minute interface
+
+1.18.40 fix: fix stock_hk_daily interface
+
+1.18.39 fix: fix stock_hk_daily interface
+
+1.18.38 fix: fix stock_hk_index_daily_sina interface
+
+1.18.37 fix: fix fund_etf_dividend_sina interface
+
+1.18.36 fix: fix stock_zygc_em interface
 
 1.18.35 fix: fix stock_ipo_ths interface
 
